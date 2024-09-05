@@ -1,0 +1,40 @@
+
+datasets: [
+  # '/home/phb/phb/phb_research/data_2/C_sample.jsonl', # 0.8
+  # '/home/phb/phb/phb_research/data_2/C++_sample.jsonl',
+  # '/home/phb/phb/phb_research/data_2/Java_sample.jsonl',
+  # '/home/phb/phb/phb_research/data_2/Python_sample.jsonl',
+  '/home/phb/phb/phb_research/data_2/convert/all.jsonl'
+  
+]
+num_samples: 100000
+
+# Model Configuration
+# model_path: "/home/phb/phb/models/flan-t5-small"
+model_path: "/home/phb/phb/models/codet5-small"
+  # 或您选择的其他T5模型路径
+
+# Dataset Configuration
+max_length: 128  # 输入序列的最大长度
+
+# Training Configuration
+output_dir: "./results/codet5"
+per_device_train_batch_size: 8
+per_device_eval_batch_size: 1
+gradient_accumulation_steps: 1
+learning_rate: 2e-4
+lr_scheduler_type: "cosine"
+warmup_ratio: 0.1
+num_train_epochs: 4
+
+# Saving and Logging Configuration
+save_strategy: "steps"
+save_steps: 1000
+logging_steps: 100
+evaluation_strategy: "steps"
+eval_steps: 500
+
+# LoRA Configuration
+lora_r: 8
+lora_alpha: 32
+lora_dropout: 0.05
